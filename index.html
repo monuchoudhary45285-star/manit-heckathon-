@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health sakhi - Women's Health Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        <span>✚</span> Health sakhi
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#symptoms">Symptoms</a>
+        <a href="#reminders">Reminders</a>
+        <a href="#healthcare">Find Care</a>
+        <a href="#records">Records</a>
+    </nav>
+
+    <button class="profile-btn" onclick="openProfile()">
+        My Profile
+    </button>
+
+</header>
+
+
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <p class="small-title">
+            WOMEN'S DIGITAL HEALTH COMPANION
+        </p>
+
+        <h1>
+            Your Health.<br>
+            <span>In One Simple Place.</span>
+        </h1>
+
+        <p class="hero-text">
+            Basic health guidance, symptom tracking, reminders
+            and nearby healthcare support — designed with women in mind.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#symptoms" class="btn primary">
+                Check Symptoms
+            </a>
+
+            <a href="#healthcare" class="btn secondary">
+                Find Healthcare
+            </a>
+
+        </div>
+
+        <div class="features">
+
+            <span>✓ Simple Language</span>
+            <span>✓ Private Records</span>
+            <span>✓ Reminder Support</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="phone">
+
+        <div class="phone-top"></div>
+
+        <div class="health-card">
+
+            <div class="heart">♥️</div>
+
+            <div>
+                <small>Today's Health</small>
+                <h3>How are you feeling?</h3>
+            </div>
+
+        </div>
+
+        <div class="mini-boxes">
+
+            <div>
+                <b>Symptoms</b>
+                <small>Track</small>
+            </div>
+
+            <div>
+                <b>Reminders</b>
+                <small>3 Active</small>
+            </div>
+
+        </div>
+
+        <div class="mini-list">
+
+            <p>💊 Medicine Reminder <span>8:00 PM</span></p>
+
+            <p>🩺 Health Check-up <span>Tomorrow</span></p>
+
+            <p>📅 Period Tracker <span>5 Days</span></p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SYMPTOMS -->
+<section id="symptoms" class="section">
+
+    <div class="section-title">
+
+        <p>STEP 1</p>
+
+        <h2>
+            Tell Us What You're Experiencing
+        </h2>
+
+        <span>
+            Enter basic symptoms to receive general guidance.
+        </span>
+
+    </div>
+
+
+    <div class="symptom-container">
+
+        <div class="box">
+
+            <label>
+                Symptoms / Health Information
+            </label>
+
+            <textarea
+                id="symptomInput"
+                placeholder="Example: headache, tiredness, mild fever..."
+            ></textarea>
+
+
+            <div class="chips">
+
+                <button onclick="addSymptom('Headache')">
+                    Headache
+                </button>
+
+                <button onclick="addSymptom('Tiredness')">
+                    Tiredness
+                </button>
+
+                <button onclick="addSymptom('Stomach pain')">
+                    Stomach Pain
+                </button>
+
+                <button onclick="addSymptom('Fever')">
+                    Fever
+                </button>
+
+            </div>
+
+
+            <button class="btn primary full"
+                    onclick="getGuidance()">
+
+                Get General Guidance
+
+            </button>
+
+        </div>
+
+
+        <div class="guidance box" id="guidance">
+
+            <div class="empty">
+
+                <div class="medical-icon">
+                    🩺
+                </div>
+
+                <h3>
+                    Your guidance will appear here
+                </h3>
+
+                <p>
+                    Enter your symptoms and click
+                    "Get General Guidance".
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REMINDERS -->
+<section id="reminders" class="section light">
+
+    <div class="section-title">
+
+        <p>STEP 2</p>
+
+        <h2>
+            Medicine & Check-up Reminders
+        </h2>
+
+        <span>
+            Never miss an important health task.
+        </span>
+
+    </div>
+
+
+    <div class="reminder-container">
+
+        <div class="box">
+
+            <h3>Add Reminder</h3>
+
+            <input
+                type="text"
+                id="reminderName"
+                placeholder="Reminder name"
+            >
+
+            <input
+                type="time"
+                id="reminderTime"
+            >
+
+            <select id="reminderType">
+
+                <option>Medicine</option>
+
+                <option>Check-up</option>
+
+                <option>Other</option>
+
+            </select>
+
+            <button
+                class="btn primary full"
+                onclick="addReminder()">
+
+                Add Reminder
+
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>My Reminders</h3>
+
+            <div id="reminderList"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HEALTHCARE -->
+<section id="healthcare" class="section">
+
+    <div class="section-title">
+
+        <p>STEP 3</p>
+
+        <h2>
+            Find Nearby Healthcare
+        </h2>
+
+        <span>
+            Find healthcare facilities when professional
+            consultation is required.
+        </span>
+
+    </div>
+
+
+    <div class="healthcare-box">
+
+        <div class="search">
+
+            <input
+                id="location"
+                type="text"
+                placeholder="Enter city or area"
+            >
+
+            <button
+                class="btn primary"
+                onclick="findHealthcare()">
+
+                Find Centres
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="healthcareResults"
+            class="healthcare-results">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RECORDS -->
+<section id="records" class="section light">
+
+    <div class="section-title">
+
+        <p>MY HEALTH</p>
+
+        <h2>
+            Private Health Records
+        </h2>
+
+        <span>
+            Keep your basic health information organized.
+        </span>
+
+    </div>
+
+
+    <div class="records">
+
+        <div class="record-card">
+
+            <div class="record-icon">📋</div>
+
+            <h3>Health Profile</h3>
+
+            <p id="profileText">
+                No profile added yet.
+            </p>
+
+            <button
+                onclick="openProfile()"
+                class="text-button">
+
+                Update Profile →
+
+            </button>
+
+        </div>
+
+
+        <div class="record-card">
+
+            <div class="record-icon">🧾</div>
+
+            <h3>Medical Notes</h3>
+
+            <p>
+                Store simple notes about appointments,
+                reports and questions.
+            </p>
+
+            <button
+                onclick="addNote()"
+                class="text-button">
+
+                Add Note →
+
+            </button>
+
+        </div>
+
+
+        <div class="record-card">
+
+            <div class="record-icon">🔐</div>
+
+            <h3>Privacy First</h3>
+
+            <p>
+                Your demo information is stored locally
+                in your browser.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WARNING -->
+<section class="warning-section">
+
+    <div class="warning">
+
+        <div class="warning-icon">
+            !
+        </div>
+
+        <div>
+
+            <h3>
+                When Should You Seek Professional Care?
+            </h3>
+
+            <p>
+                Severe or worsening symptoms, difficulty breathing,
+                fainting, heavy bleeding or severe pain should be
+                assessed by a qualified healthcare professional.
+            </p>
+
+        </div>
+
+        <a
+            href="#healthcare"
+            class="btn secondary">
+
+            Find Care
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div>
+
+        <h2>✚ SakhiCare</h2>
+
+        <p>
+            A digital healthcare companion for women.
+        </p>
+
+    </div>
+
+    <div class="footer-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#symptoms">Symptoms</a>
+
+        <a href="#reminders">Reminders</a>
+
+        <a href="#healthcare">Healthcare</a>
+
+    </div>
+
+</footer>
+
+
+<!-- PROFILE POPUP -->
+<div id="profileModal" class="modal">
+
+    <div class="modal-content">
+
+        <button
+            class="close"
+            onclick="closeProfile()">
+
+            ×
+
+        </button>
+
+        <h2>Create Your Profile</h2>
+
+        <input
+            id="profileName"
+            type="text"
+            placeholder="Your Name"
+        >
+
+        <input
+            id="profileAge"
+            type="number"
+            placeholder="Your Age"
+        >
+
+        <select id="profileLanguage">
+
+            <option>English</option>
+
+            <option>Hindi</option>
+
+            <option>Hinglish</option>
+
+        </select>
+
+        <button
+            class="btn primary full"
+            onclick="saveProfile()">
+
+            Save Profile
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
